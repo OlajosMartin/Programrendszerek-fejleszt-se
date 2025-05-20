@@ -1,0 +1,42 @@
+<div class="table-container" *ngIf="offers && offers.length; else noOffersTemplate">
+    <table mat-table [dataSource]="offers">
+        <ng-container matColumnDef="hotelName"><!--</ng-container>  *ngIf="offers.userId === authService.getUserId()">-->
+            <th mat-header-cell *matHeaderCellDef>Hotel név</th>
+            <td mat-cell *matCellDef="let element">{{element.hotelName}}</td>
+        </ng-container>
+        <ng-container matColumnDef="fromDate">
+            <th mat-header-cell *matHeaderCellDef>Érkezés időpontja</th>
+            <td mat-cell *matCellDef="let element">{{element.fromDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="toDate">
+            <th mat-header-cell *matHeaderCellDef>Távozás időpontja</th>
+            <td mat-cell *matCellDef="let element">{{element.toDate}}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Leírás</th>
+            <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>Ár</th>
+            <td mat-cell *matCellDef="let element">{{element.price}}</td>
+        </ng-container>
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef>Törlés</th>
+            <td mat-cell *matCellDef="let element; let i = index"><mat-icon fontIcon="delete" (click)="deleteOffer(element._id, i)"></mat-icon></td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    </table>
+</div>
+
+<ng-template #noOffersTemplate>
+    <p>No bookings available.</p>
+</ng-template>
+
+<div class="buttons">
+    <button type="button" (click)="navigateToOffers()">Szobák listázása</button>
+</div>
+<div class="buttons">
+    <button type="reset" (click)="logout()">Kijelentkezés</button>
+</div>

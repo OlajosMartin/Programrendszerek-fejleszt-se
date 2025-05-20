@@ -1,0 +1,15 @@
+<div class="login-container">
+    <form class="login-form" [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
+        <input formControlName="name" type="text" placeholder="Hotel név" required>
+        <input formControlName="location" type="text" placeholder="Elhelyezkedés" required>
+        <input formControlName="description" type="text" placeholder="Leírás" required>
+        <input formControlName="services" type="text" placeholder="Szolgáltatások" required>
+        <input formControlName="image" type="text" placeholder="Kép" required>
+        <div class="buttons">
+            <button type="submit">Feltöltés</button>
+        </div>
+        <div class="buttons">
+            <button type="button" (click)="goBack()">Vissza</button>
+        </div>
+    </form>
+</div>

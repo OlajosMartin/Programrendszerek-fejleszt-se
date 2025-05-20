@@ -1,0 +1,8 @@
+<h2>VIGYÁZAT</h2>
+<mat-dialog-content>
+    <p>Biztos vagy benne, hogy ezt a felhasználót vagy foglalást szeretnéd törölni?</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="true"true>Igen</button>
+    <button mat-button (click)="onNoClick()" cdkFocusInitial>Nem</button>
+</mat-dialog-actions>

@@ -1,0 +1,31 @@
+<div class="login-container">
+    <form class="login-form" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <input formControlName="email" type="email" placeholder="Email cím" required [ngClass]="{'invalid-input': signupForm.get('email')?.errors}">
+        <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)">
+            <p *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.errors!['required']">Az email cím kitöltése kötelező.</p>
+            <p *ngIf="signupForm.get('email')?.errors && signupForm.get('email')?.errors!['email' ]">Kérlek adj meg valós email címet.</p>
+        </div>
+        <input formControlName="name" type="text" placeholder="Név" required>
+        <input formControlName="address" type="text" placeholder="Cím" required>
+        <input formControlName="nickname" type="text" placeholder="Becenév" required>
+        <input formControlName="password" type="password" placeholder="Jelszó" required [ngClass]="{'invalid-input': signupForm.get('password')?.errors}">
+        <div *ngIf="signupForm.get('password')?.invalid && (signupForm.get('password')?.touched || signupForm.get('password')?.dirty)">
+            <p *ngIf="signupForm.get('password')?.errors && signupForm.get('password')?.errors!['required']">A jelszó kitöltése kötelező.</p>
+            <p *ngIf="signupForm.get('password')?.errors && signupForm.get('password')?.errors!['minlength']">A jelszónak legalább 8 karakternek kell lennie.</p>
+        </div>
+        <input formControlName="confirmPassword" type="password" placeholder="Jelszó újra" required [ngClass]="{'invalid-input': signupForm.get('confirmPassword')?.errors}">
+        <div *ngIf="signupForm.get('confirmPassword')?.invalid && (signupForm.get('confirmPassword')?.touched || signupForm.get('confirmPassword')?.dirty)">
+            <p *ngIf="signupForm.get('confirmPassword')?.errors && signupForm.get('confirmPassword')?.errors!['required']">A jelszó újbóli kitöltése kötelező.</p>
+            <p *ngIf="signupForm.get('confirmPassword')?.errors && signupForm.get('confirmPassword')?.errors!['mustMatch']">A jelszavaknak egyeznie kell.</p>
+        </div>
+        <div class="buttons">
+            <button type="submit">Regisztráció</button>
+        </div>
+        <div class="buttons">
+            <button type="reset" (click)="goBack()">Vissza</button>
+        </div>
+    </form>
+    <!--<ul *ngFor="let item of myArray">
+        <li>{{item}}</li>
+    </ul>-->
+</div>
